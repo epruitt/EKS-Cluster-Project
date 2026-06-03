@@ -82,6 +82,13 @@ variable "tags" {
 }
 
 # Ec2 instance types for worker node
+variable "node_instance_types" {
+  description = "List of EC2 instance types for the node group"
+  type        = list(string)
+  default     = ["t3.medium"]
+}
+
+# Capacity type for node group (ON_DEMAND or SPOT)
 variable "node_capacity_type" {
   description = "instance capacity type: ON_DEMAND or SPOT"
   type = string
