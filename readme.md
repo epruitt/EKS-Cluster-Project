@@ -6,10 +6,7 @@ This project provisions a **production-ready Amazon EKS (Elastic Kubernetes Serv
 
 ## Architecture Overview
 
-```
 ![EKS Project Diagram](https://raw.githubusercontent.com/epruitt/EKS-Cluster-Project/main/images/eks-project-diagram.png)
-
-```
 
 **Key design decisions:**
 - EKS worker nodes are deployed in **private subnets** for security
