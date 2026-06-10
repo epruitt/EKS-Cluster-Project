@@ -47,12 +47,10 @@ resource "aws_eks_cluster" "main" {
   # Common tags applied to the EKS cluster
   tags = var.tags
 
-
   # Access Config – How we control who can access our EKS cluster
   # - We keep the old system so everything works today
   # - We enable the new system so the cluster is future-ready
   # - And we guarantee you (the creator) always have admin access
- 
   access_config {
     authentication_mode = "API_AND_CONFIG_MAP" # Three options: CONFIG_MAP, API, API_AND_CONFIG_MAP
     bootstrap_cluster_creator_admin_permissions = true

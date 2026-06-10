@@ -1,34 +1,30 @@
-#Role is assumed by the EKS service to manage the control plan resources
-
+# IAM Role for EKS Control Plane
+# This role is assumed by the EKS service to manage the control plane resources
 resource "aws_iam_role" "eks_cluster" {
-  #unique name for the control plane IAM role
+  # Unique name for the control plane IAM role
   name = "${local.name}-eks-cluster-role"
 
-  #Trust policy to allow EKS to assume this role
+  # Trust policy to allow EKS to assume this role
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
-    Statement=[{
-      Action = "sts:AssumeRole",
-      Effect = "Allow",
+    Statement = [{
+      Action    = "sts:AssumeRole",
+      Effect    = "Allow",
       Principal = {
         Service = "eks.amazonaws.com"
       }
-
     }]
   })
 
-  #Tags applied to this IAM role
+  # Tags applied to this IAM role
   tags = var.tags
-  
 }
 
-#Attach the required policy for EKS to manage cluster contorl plane
-#Mandatory for all EKS clusters
 
+# Attach the required policy for EKS to manage cluster control plane
 resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
-  role = aws_iam_role.eks_cluster.name
+  role       = aws_iam_role.eks_cluster.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  
 }
 
 # Attach VPC Resource Controller policy
