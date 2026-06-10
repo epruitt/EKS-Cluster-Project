@@ -7,7 +7,7 @@ This project provisions a **production-ready Amazon EKS (Elastic Kubernetes Serv
 ## Architecture Overview
 
 ```
-![alt text](image.png)
+![EKS Project Diagram](images/image.png)
 
 ```
 
